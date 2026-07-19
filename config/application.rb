@@ -33,8 +33,17 @@ module Myapp
     # These settings can be overridden in specific environments using the files
     # in config/environments, which are processed later.
     #
-    # config.time_zone = "Central Time (US & Canada)"
+    # Application time zone for display; Active Record still stores timestamps in UTC.
+    config.time_zone = "Asia/Ho_Chi_Minh"
+
+    # Default locale (locale data provided by the rails-i18n gem).
+    config.i18n.default_locale = :en
     # config.eager_load_paths << Rails.root.join("extras")
+
+    # Use Slim for every generated view template — the project must never use ERB.
+    config.generators do |g|
+      g.template_engine :slim
+    end
 
     # Don't generate system test files.
     config.generators.system_tests = nil

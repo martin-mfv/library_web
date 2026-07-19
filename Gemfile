@@ -16,8 +16,12 @@ gem "turbo-rails"
 gem "stimulus-rails"
 # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem "tailwindcss-rails"
+# Slim template engine + Rails generators defaulting to .slim [https://github.com/slim-template/slim-rails]
+gem "slim-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+# Default locale data (pluralization, formats, translations) [https://github.com/svenfuchs/rails-i18n]
+gem "rails-i18n", "~> 7.0"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
