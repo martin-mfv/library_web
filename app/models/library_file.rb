@@ -8,7 +8,6 @@ class LibraryFile < ApplicationRecord
 
   enum :visibility, { private: 0, public: 1 }, default: :public, prefix: :visibility
 
-  scope :visible_to, ->(user) { where(visibility: :public).or(where(user_id: user.id)) }
   scope :search_by_name, lambda { |query|
     return all if query.blank?
 
