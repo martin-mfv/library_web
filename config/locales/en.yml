@@ -62,6 +62,4 @@ en:
         actions: "Actions"
       empty:
         title: "No files here yet"
-        with_search: "No files match “%{query}”."
-        without_search: "Upload a file to get started."
 
