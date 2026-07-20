@@ -93,7 +93,7 @@ RSpec.describe LibraryFileSearchForm do
       it "works with custom relation" do
         mine = create_library_file(user: user, name: "Mine.txt")
         shared = create_library_file(user: create(:user), name: "Shared.txt")
-        shared_relation = LibraryFile.visible_to(user).where(id: [ shared.id, mine.id ]).where.not(user_id: user.id)
+        shared_relation = LibraryFile.visibility_public.where(id: [ shared.id, mine.id ]).where.not(user_id: user.id)
 
         expect(described_class.new(shared_relation, index_url).search!).to contain_exactly(shared)
       end

@@ -21,10 +21,6 @@ class LibraryFile < ApplicationRecord
     attachment.blob&.byte_size
   end
 
-  def uploaded_at
-    attachment.blob&.created_at
-  end
-
   def content_type
     attachment.blob&.content_type
   end

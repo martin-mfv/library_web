@@ -69,14 +69,6 @@ RSpec.describe LibraryFile, type: :model do
     end
   end
 
-  describe "#uploaded_at" do
-    it "derives uploaded_at from the attachment blob created_at" do
-      record = create(:library_file)
-
-      expect(record.uploaded_at).to eq(record.attachment.blob.created_at)
-    end
-  end
-
   describe "#content_type" do
     it "derives content_type from the attachment blob" do
       record = create(:library_file)

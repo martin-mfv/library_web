@@ -5,7 +5,7 @@ class LibraryFileSearchForm
   SORT_COLUMNS = {
     "name" => "library_files.name",
     "size" => "active_storage_blobs.byte_size",
-    "date" => "active_storage_blobs.created_at"
+    "date" => "library_files.created_at"
   }.freeze
 
   ASC_DIRECTION = "asc"
