@@ -12,6 +12,11 @@ tr class="group h-12 border-b border-line last:border-b-0 hover:bg-primary-soft"
           | Private
   td class="px-4 text-[13px] text-ink-muted whitespace-nowrap" = file.uploaded_at.strftime("%b %-d, %Y")
   td class="px-4 text-[13px] text-ink-muted whitespace-nowrap" = number_to_human_size(file.byte_size)
+  td class="px-4 text-[13px] text-ink-muted whitespace-nowrap"
+    - if file.user_id == current_user.id
+      span class="inline-flex items-center gap-1 text-xs font-medium text-primary bg-primary-soft px-2 py-0.5 rounded-full shrink-0" = t("library.owner.me")
+    - else
+      span class="inline-flex items-center gap-1 text-xs font-medium text-ink-muted bg-[#F5F5F5] px-2 py-0.5 rounded-full shrink-0" = file.user.name
   td class="px-4 text-right"
     button type="button" aria-label="File actions" class="text-ink-muted rounded-control p-1 opacity-0 group-hover:opacity-100 focus:opacity-100 hover:bg-white focus:outline-none focus:ring-2 focus:ring-primary-soft"
       svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 shrink-0" aria-hidden="true"

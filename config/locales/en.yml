@@ -43,7 +43,7 @@ en:
   library:
     sidebar:
       upload: "Upload"
-      all_files: "All files"
+      all_files: "My Library"
       shared_with_me: "Shared with me"
     topbar:
       search: "Search files"
@@ -59,7 +59,14 @@ en:
         name: "Name"
         modified: "Modified"
         size: "Size"
+        owner: "Owner"
         actions: "Actions"
       empty:
         title: "No files here yet"
+    owner:
+      me: "Me"
+    shared_with_me:
+      title: "Shared with me"
+      empty:
+        title: "No files shared with you yet"
 

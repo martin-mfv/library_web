@@ -31,5 +31,7 @@ Rails.application.routes.draw do
 
   # get "styleguide", to: "styleguide#index"
 
+  get "shared_with_me", to: "library_files#shared_with_me", as: :shared_with_me
+
   root to: "library_files#index"
 end

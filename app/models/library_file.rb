@@ -8,6 +8,13 @@ class LibraryFile < ApplicationRecord
 
   enum :visibility, { private: 0, public: 1 }, default: :public, prefix: :visibility
 
+  scope :visible_to, ->(user) { where(visibility: :public).or(where(user_id: user.id)) }
+  scope :search_by_name, lambda { |query|
+    return all if query.blank?
+
+    where("library_files.name ILIKE ?", "%#{sanitize_sql_like(query)}%")
+  }
+
   validates :name, presence: true, length: { maximum: 255 }
   validate :attachment_must_be_present
 
