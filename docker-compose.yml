@@ -17,3 +17,13 @@ services:
     depends_on:
       - db
       - redis
+
+  css:
+    build: .
+    command: bin/rails tailwindcss:watch[poll]
+    volumes:
+      - .:/myapp
+    tty: true
+    stdin_open: true
+    depends_on:
+      - web
