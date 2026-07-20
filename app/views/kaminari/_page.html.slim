@@ -1,0 +1,4 @@
+- if page.current?
+  span class="inline-flex items-center justify-center min-w-9 h-9 px-2 rounded-control border border-primary text-sm font-semibold bg-primary text-white" aria-current="page" = page
+- else
+  = link_to page, url, remote: remote, rel: page.rel, class: "inline-flex items-center justify-center min-w-9 h-9 px-2 rounded-control border border-line text-sm text-ink hover:bg-canvas focus:outline-none focus:ring-2 focus:ring-primary-soft"

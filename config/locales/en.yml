@@ -1,4 +1,8 @@
 en:
+  kaminari:
+    pagination:
+      next: "Next"
+      previous: "Previous"
   auth:
     brand: "Library"
     layouts:
@@ -45,3 +49,19 @@ en:
       search: "Search files"
       account_menu: "Account menu"
       sign_out: "Log out"
+    index:
+      title: "My Library"
+      count:
+        zero: "No files"
+        one: "1 file"
+        other: "%{count} files"
+      columns:
+        name: "Name"
+        modified: "Modified"
+        size: "Size"
+        actions: "Actions"
+      empty:
+        title: "No files here yet"
+        with_search: "No files match “%{query}”."
+        without_search: "Upload a file to get started."
+
