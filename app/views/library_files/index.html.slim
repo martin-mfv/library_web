@@ -1,0 +1,20 @@
+- content_for :title, "My Library · Library"
+
+div class="max-w-5xl mx-auto space-y-6"
+  header class="flex items-end justify-between gap-4"
+    div
+      h1 class="text-2xl font-semibold text-ink" My Library
+      p class="text-[13px] text-ink-muted mt-1" = pluralize(@files.size, "file")
+
+  / File list (mock data). Columns: Name | Modified | Size | (⋯ actions).
+  div class="bg-surface border border-line rounded-card shadow-card overflow-hidden"
+    table class="w-full text-left"
+      thead
+        tr class="border-b border-line"
+          th scope="col" class="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-ink-muted" Name
+          th scope="col" class="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-ink-muted whitespace-nowrap" Modified
+          th scope="col" class="px-4 py-2 text-xs font-semibold uppercase tracking-wide text-ink-muted whitespace-nowrap" Size
+          th scope="col" class="w-12 px-4 py-2"
+            span class="sr-only" Actions
+      tbody
+        = render partial: "file_row", collection: @files, as: :file

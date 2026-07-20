@@ -5,7 +5,7 @@ Rails.application.routes.draw do
                sign_in: "sign_in",
                sign_out: "sign_out"
              },
-             skip: [:registrations, :passwords]
+             skip: [ :registrations, :passwords ]
 
   as :user do
     get "sign_up", to: "devise/registrations#new", as: :new_user_registration
@@ -31,5 +31,5 @@ Rails.application.routes.draw do
 
   # get "styleguide", to: "styleguide#index"
 
-  root to: "top#index"
+  root to: "library_files#index"
 end

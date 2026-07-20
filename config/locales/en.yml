@@ -1,5 +1,3 @@
-
-
 en:
   auth:
     brand: "Library"
@@ -38,8 +36,12 @@ en:
         new_password_label: "New password"
         confirm_password_label: "Confirm password"
         submit: "Update password"
-  top:
-    title: "%{brand}"
-    heading: "%{brand}"
-    subtitle: "Temporary top page."
-    sign_in_cta: "Go to sign in"
+  library:
+    sidebar:
+      upload: "Upload"
+      all_files: "All files"
+      shared_with_me: "Shared with me"
+    topbar:
+      search: "Search files"
+      account_menu: "Account menu"
+      sign_out: "Log out"
