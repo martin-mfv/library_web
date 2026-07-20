@@ -33,6 +33,8 @@ Rails.application.routes.draw do
 
   get "shared_with_me", to: "library_files#shared_with_me", as: :shared_with_me
 
+  resources :uploads, only: [ :new, :create ]
+
   resources :library_files, only: [ :destroy ] do
     member do
       post :copy
