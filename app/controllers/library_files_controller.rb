@@ -5,7 +5,7 @@ class LibraryFilesController < AuthController
   end
 
   def shared_with_me
-    relation = LibraryFile.visibility_public.where.not(user_id: current_user.id)
+    relation = LibraryFile.visible_to(current_user).where.not(user_id: current_user.id)
     @search = LibraryFileSearchForm.new(relation, { action: :shared_with_me }, search_params)
     @files = @search.search!.page(params[:page])
 
