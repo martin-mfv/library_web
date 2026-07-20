@@ -19,6 +19,8 @@ gem "tailwindcss-rails"
 # Slim template engine + Rails generators defaulting to .slim [https://github.com/slim-template/slim-rails]
 gem "slim-rails"
 gem "devise"
+
+gem "kaminari"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 # Default locale data (pluralization, formats, translations) [https://github.com/svenfuchs/rails-i18n]
@@ -70,4 +72,3 @@ end
 group :development do
   gem "rubocop-rspec", require: false
 end
-
