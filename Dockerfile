@@ -8,7 +8,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - && \
     npm install -g yarn
 
 WORKDIR /myapp
-COPY Gemfile /myapp/Gemfile
+COPY Gemfile Gemfile.lock /myapp/
 RUN bundle install
 COPY . /myapp
 
