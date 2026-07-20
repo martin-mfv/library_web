@@ -1,12 +1,12 @@
-- content_for :title, "Sign in · Library"
+- content_for :title, t("auth.sessions.new.title")
 
 section class="w-full max-w-md bg-white border border-line rounded-card shadow-card p-8"
   div class="text-center mb-6"
-    span class="text-base font-semibold text-ink" Library
-    h1 class="text-2xl font-semibold text-ink mt-2" Sign in
-    p class="text-sm text-ink-muted mt-1" Use your email and password to continue.
+    span class="text-base font-semibold text-ink" = t("auth.brand")
+    h1 class="text-2xl font-semibold text-ink mt-2" = t("auth.sessions.new.heading")
+    p class="text-sm text-ink-muted mt-1" = t("auth.sessions.new.subtitle")
 
-  = render "devise/shared/flash"
+  = render "devise/shared/devise_flash"
 
   = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-4" }) do |f|
     div
@@ -20,9 +20,9 @@ section class="w-full max-w-md bg-white border border-line rounded-card shadow-c
     - if devise_mapping.rememberable?
       label class="inline-flex items-center gap-2 text-sm text-ink"
         = f.check_box :remember_me, class: "h-4 w-4 rounded border-line accent-primary"
-        span Remember me
+        span = t("auth.sessions.new.remember_me")
 
-    = f.submit "Sign in", class: "inline-flex items-center justify-center w-full h-9 px-4 rounded-control text-sm font-medium bg-primary hover:bg-primary-hover text-white focus:outline-none focus:ring-2 focus:ring-primary-soft"
+    = f.submit t("auth.sessions.new.submit"), class: "inline-flex items-center justify-center w-full h-9 px-4 rounded-control text-sm font-medium bg-primary hover:bg-primary-hover text-white focus:outline-none focus:ring-2 focus:ring-primary-soft"
 
   div class="mt-4 flex flex-col gap-2 text-center"
-    = render "devise/shared/links"
+    = render "devise/shared/devise_links"

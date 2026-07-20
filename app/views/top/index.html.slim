@@ -1,7 +1,7 @@
-- content_for :title, "Library"
+- content_for :title, t("top.title")
 
 section class="max-w-3xl mx-auto py-10"
-  h1 class="text-2xl font-semibold text-ink" Library
-  p class="text-sm text-ink-muted mt-2" Temporary top page.
+  h1 class="text-2xl font-semibold text-ink" = t("top.heading")
+  p class="text-sm text-ink-muted mt-2" = t("top.subtitle")
   div class="mt-6"
-    = link_to "Go to sign in", new_user_session_path, class: "inline-flex items-center justify-center h-9 px-4 rounded-control text-sm font-medium bg-primary hover:bg-primary-hover text-white"
+    = link_to t("top.sign_in_cta"), new_user_session_path, class: "inline-flex items-center justify-center h-9 px-4 rounded-control text-sm font-medium bg-primary hover:bg-primary-hover text-white"

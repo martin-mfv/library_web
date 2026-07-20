@@ -5,3 +5,9 @@
 - if alert.present?
   div class="mb-4 rounded-control border border-danger/30 bg-[#FDECEA] px-3 py-2 text-sm text-danger"
     = alert
+
+- if resource.errors.any?
+  div class="mb-4 rounded-control border border-danger/30 bg-[#FDECEA] px-3 py-2 text-sm text-danger"
+    ul class="list-disc pl-5 space-y-1"
+      - resource.errors.full_messages.each do |message|
+        li = message
