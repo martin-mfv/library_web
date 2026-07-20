@@ -1,0 +1,39 @@
+- content_for :title, "#{t('library.upload.title')} · #{t('auth.brand')}"
+
+div class="max-w-3xl mx-auto space-y-6"
+  header
+    h1 class="text-2xl font-semibold text-ink" = t("library.upload.heading")
+    p class="text-[13px] text-ink-muted mt-1" = t("library.upload.subtitle")
+
+  = form_with scope: :library_file, url: uploads_path, local: true,
+    html: { data: { controller: "dropzone", dropzone_direct_upload_url_value: rails_direct_uploads_url, dropzone_create_url_value: uploads_path, dropzone_root_url_value: root_path } } do |f|
+    div data-dropzone-target="zone" role="button" tabindex="0" aria-label=t("library.upload.browse") data-action="dragover->dropzone#onDragover dragenter->dropzone#onDragover dragleave->dropzone#onDragleave drop->dropzone#onDrop click->dropzone#browse keydown->dropzone#onKeydown" class="flex min-h-35 cursor-pointer flex-col items-center justify-center gap-3 rounded-card border-2 border-dashed border-line bg-canvas px-6 py-8 text-center transition-colors focus:outline-none focus:ring-2 focus:ring-primary-soft"
+      span class="text-ink-muted"
+        svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 shrink-0" aria-hidden="true"
+          path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
+      p class="text-sm text-ink-muted"
+        span = t("library.upload.drag_here")
+        = " "
+        span class="font-medium text-primary" = t("library.upload.browse")
+      p class="text-[13px] text-ink-muted" = t("library.upload.hint")
+
+    = f.file_field :files, multiple: true, class: "hidden", data: { dropzone_target: "input", action: "change->dropzone#filesSelected" }
+
+    div class="mt-4"
+      = f.label :visibility, t("library.visibility"), class: "block text-xs font-semibold uppercase tracking-wide text-ink-muted mb-2"
+      div class="relative"
+        = f.select :visibility,
+          options_for_select([[t("library.visibility_public"), "public"], [t("library.visibility_private"), "private"]], "public"),
+          {},
+          { class: "w-full h-9 appearance-none rounded-control border border-line bg-surface px-3 pr-9 text-sm text-ink focus:outline-none focus:ring-2 focus:ring-primary-soft", data: { dropzone_target: "visibility" } }
+        span class="pointer-events-none absolute inset-y-0 right-3 inline-flex items-center text-ink-muted"
+          svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4" aria-hidden="true"
+            path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"
+
+    div class="mt-4 rounded-card border border-line bg-surface"
+      div class="border-b border-line px-4 py-2"
+        p class="text-xs font-semibold uppercase tracking-wide text-ink-muted" = t("library.upload.queue_title")
+      ul data-dropzone-target="list" class="divide-y divide-line"
+
+    div class="mt-4 flex items-center justify-end gap-3"
+      = button_tag t("library.upload.submit"), type: "button", class: "inline-flex items-center gap-2 h-9 px-4 rounded-control bg-primary hover:bg-primary-hover text-white text-sm font-medium disabled:cursor-not-allowed disabled:bg-[#9bb8f5]", disabled: true, data: { dropzone_target: "submit", action: "click->dropzone#submitUploads" }

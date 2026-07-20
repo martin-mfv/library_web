@@ -41,6 +41,9 @@ en:
         confirm_password_label: "Confirm password"
         submit: "Update password"
   library:
+    visibility: "Visibility"
+    visibility_public: "Public"
+    visibility_private: "Private"
     sidebar:
       upload: "Upload"
       all_files: "My Library"
@@ -69,4 +72,17 @@ en:
       title: "Shared with me"
       empty:
         title: "No files shared with you yet"
+    upload:
+      title: "Upload files"
+      heading: "Upload files"
+      subtitle: "Add files to your library — drag & drop or browse."
+      drag_here: "Drag files here or"
+      browse: "click to browse"
+      hint: "You can upload multiple files at once."
+      queue_title: "Upload queue"
+      queue_empty: "No file selected"
+      submit: "Start upload"
+      failed: "Some files failed to upload. Please try again."
+      done: "All uploads finished."
+      go_to_library: "Go to My Library"
 

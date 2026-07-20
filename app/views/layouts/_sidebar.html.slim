@@ -1,16 +1,13 @@
 aside class="w-60 shrink-0 bg-sidebar border-r border-line flex flex-col"
-  / Logo
   div class="px-5 py-4"
     = image_tag "logo.svg", alt: t("auth.brand"), class: "h-10 w-auto"
 
-  / Upload button (placeholder — real dropzone lands in Step 5)
   div class="px-3 pb-4"
-    button type="button" class="flex w-full items-center justify-center gap-2 h-9 px-4 rounded-control bg-primary hover:bg-primary-hover text-white text-sm font-medium"
+    = link_to new_upload_path, class: "flex w-full items-center justify-center gap-2 h-9 px-4 rounded-control bg-primary hover:bg-primary-hover text-white text-sm font-medium" do
       svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 shrink-0"
         path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5"
       = t("library.sidebar.upload")
 
-  / Primary navigation — All files (active) + Shared with me
   nav class="px-2 space-y-1"
     = link_to root_path, class: "flex items-center gap-3 h-9 px-3 rounded-control text-sm #{sidebar_nav_link_classes(root_path)}" do
       svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 shrink-0"
