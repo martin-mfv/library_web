@@ -18,6 +18,7 @@ gem "stimulus-rails"
 gem "tailwindcss-rails"
 # Slim template engine + Rails generators defaulting to .slim [https://github.com/slim-template/slim-rails]
 gem "slim-rails"
+gem "devise"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 # Default locale data (pluralization, formats, translations) [https://github.com/svenfuchs/rails-i18n]
@@ -54,6 +55,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "letter_opener"
 end
 
 group :development, :test do
@@ -62,6 +64,7 @@ group :development, :test do
   gem "faker"
   gem "pry-rails"
   gem "pry-byebug"
+  gem "shoulda-matchers"
 end
 
 group :development do
