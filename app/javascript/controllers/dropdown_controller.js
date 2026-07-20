@@ -16,7 +16,6 @@ export default class extends Controller {
   }
 
   toggle(event) {
-    // Stop the opening click from immediately reaching the outside-click handler.
     event.stopPropagation()
     this.open ? this.hide() : this.show()
   }
