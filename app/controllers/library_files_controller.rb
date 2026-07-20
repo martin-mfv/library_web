@@ -16,19 +16,9 @@ class LibraryFilesController < AuthController
   end
 
   def copy
-    copy = current_user.library_files.new(
-      name: copied_name(@library_file.name),
-      visibility: :private,
-      copied_from: @library_file
-    )
+    copied_file = LibraryFiles::CopyService.new(source_file: @library_file, actor: current_user).call
 
-    copy.attachment.attach(
-      io: StringIO.new(@library_file.attachment.download),
-      filename: @library_file.attachment.filename.to_s,
-      content_type: @library_file.attachment.content_type
-    )
-
-    if copy.save
+    if copied_file
       redirect_to root_path(sort: "date", direction: "desc"), notice: "File copied successfully."
     else
       redirect_to root_path(sort: "date", direction: "desc"), alert: "Unable to copy file."
@@ -44,9 +34,9 @@ class LibraryFilesController < AuthController
   end
 
   def change_visibility
-    next_visibility = @library_file.visibility_public? ? :private : :public
+    result = LibraryFiles::ChangeVisibilityService.new(file: @library_file).call
 
-    if @library_file.update(visibility: next_visibility)
+    if result
       redirect_back fallback_location: root_path, notice: "Visibility updated successfully."
     else
       redirect_back fallback_location: root_path, alert: "Unable to update visibility."
@@ -61,10 +51,6 @@ class LibraryFilesController < AuthController
 
   def set_owned_library_file
     @library_file = current_user.library_files.find(params[:id])
-  end
-
-  def copied_name(name)
-    "#{name} (copy)"
   end
 
   def search_params

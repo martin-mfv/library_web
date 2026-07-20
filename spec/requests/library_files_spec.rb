@@ -160,8 +160,11 @@ RSpec.describe LibraryFilesController, type: :request do
         expect(copy.name).to eq("Shared.pdf (copy)")
         expect(copy.visibility).to eq("private")
         expect(copy.copied_from).to eq(source)
-        expect(copy.attachment.blob).not_to eq(source.attachment.blob)
-        expect(copy.uploaded_at).not_to eq(source.uploaded_at)
+        expect(copy.attachment.blob).to eq(source.attachment.blob)
+
+        source.destroy
+        expect(copy.reload.attachment).to be_attached
+
         expect(response).to redirect_to(root_path(sort: "date", direction: "desc"))
       end
     end
