@@ -23,6 +23,7 @@ tr class="group h-12 border-b border-line last:border-b-0 hover:bg-primary-soft"
         svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 shrink-0" aria-hidden="true"
           path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0z"
       div data-dropdown-target="menu" data-action="click->dropdown#hide" role="menu" class="hidden absolute top-full right-0 mt-2 w-56 bg-white border border-line rounded-card shadow-pop py-1 z-30"
+        = link_to "Download", rails_blob_path(file.attachment, disposition: "attachment"), class: "flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink hover:bg-canvas focus:outline-none focus:bg-canvas"
         = button_to "Copy", copy_library_file_path(file), method: :post, form_class: "block", class: "flex w-full items-center gap-2 px-3 py-2 text-left text-sm text-ink hover:bg-canvas focus:outline-none focus:bg-canvas"
         - if file.authored_by?(current_user)
           - visibility_action_label = file.visibility_public? ? "Make Private" : "Publish"
