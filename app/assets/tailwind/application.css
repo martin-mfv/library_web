@@ -1,1 +1,44 @@
 @import "tailwindcss";
+@theme {
+  /* Color */
+  --color-primary: #0061fe;
+  --color-primary-hover: #0051d5;
+  --color-primary-soft: #ebf2ff;
+
+  --color-ink: #1e1919;
+  --color-ink-muted: #637282;
+
+  --color-surface: #ffffff;
+  --color-canvas: #f7f5f2;
+  --color-sidebar: #fafbfb;
+  --color-line: #e6e8eb;
+
+  --color-success: #1c8c4c;
+  --color-warning: #c77700;
+  --color-danger: #d1453b;
+
+  /* Radius */
+  --radius-card: 8px;
+  --radius-control: 6px;
+
+  /* Shadow — kept very light, Dropbox-clean */
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-pop: 0 4px 16px rgba(0, 0, 0, 0.12);
+
+  /* Font — Dropbox uses Atlas/Sharp Grotesk; we fall back to Inter/system-ui */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
