@@ -5,7 +5,7 @@ en:
     brand: "Library"
     layouts:
       authentication:
-        default_title: "Sign in · Library"
+        default_title: "Sign in | %{brand}"
     links:
       already_have_account: "Already have an account?"
       dont_have_account: "Don't have an account?"
@@ -14,32 +14,32 @@ en:
       forgot_password: "Forgot password?"
     sessions:
       new:
-        title: "Sign in · Library"
+        title: "Sign in | %{brand}"
         heading: "Sign in"
         subtitle: "Use your email and password to continue."
         remember_me: "Remember me"
         submit: "Sign in"
     registrations:
       new:
-        title: "Sign up · Library"
+        title: "Sign up | %{brand}"
         heading: "Sign up"
-        subtitle: "Set up your account to start using Library."
+        subtitle: "Set up your account to start using %{brand}."
         submit: "Sign up"
     passwords:
       new:
-        title: "Forgot password · Library"
+        title: "Forgot password | %{brand}"
         heading: "Forgot password"
         subtitle: "We will send reset instructions to your email."
         submit: "Send reset instructions"
       edit:
-        title: "Reset password · Library"
+        title: "Reset password | %{brand}"
         heading: "Reset password"
         subtitle: "Enter your new password."
         new_password_label: "New password"
         confirm_password_label: "Confirm password"
         submit: "Update password"
   top:
-    title: "Library"
-    heading: "Library"
+    title: "%{brand}"
+    heading: "%{brand}"
     subtitle: "Temporary top page."
     sign_in_cta: "Go to sign in"

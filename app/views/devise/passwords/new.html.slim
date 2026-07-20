@@ -1,10 +1,10 @@
-- content_for :title, t("auth.passwords.new.title")
+- content_for :title, t("auth.passwords.new.title", brand: t("auth.brand"))
 
 section class="w-full max-w-md bg-white border border-line rounded-card shadow-card p-8"
   div class="text-center mb-6"
-    span class="text-base font-semibold text-ink" = t("auth.brand")
+    = image_tag "logo.svg", alt: t("auth.brand"), class: "block h-14 md:h-16 w-auto mx-auto"
     h1 class="text-2xl font-semibold text-ink mt-2" = t("auth.passwords.new.heading")
-    p class="text-sm text-ink-muted mt-1" = t("auth.passwords.new.subtitle")
+    p class="text-sm text-ink-muted mt-1" = t("auth.passwords.new.subtitle", brand: t("auth.brand"))
 
   = render "devise/shared/devise_flash"
 
