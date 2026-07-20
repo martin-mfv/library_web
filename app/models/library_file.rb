@@ -29,6 +29,10 @@ class LibraryFile < ApplicationRecord
     attachment.blob&.content_type
   end
 
+  def authored_by?(actor)
+    user_id == actor&.id
+  end
+
   private
 
   def attachment_must_be_present

@@ -13,8 +13,8 @@ div class="max-w-5xl mx-auto space-y-6"
       h1 class="text-2xl font-semibold text-ink" = t("library.#{action_name}.title")
       p class="text-[13px] text-ink-muted mt-1" = t("library.index.count", count: @files.total_count)
 
-  div class="bg-surface border border-line rounded-card shadow-card overflow-hidden"
-    table class="w-full text-left"
+  div class="bg-surface border border-line rounded-card shadow-card overflow-visible"
+    table class="w-full min-w-215 text-left"
       thead
         tr class="border-b border-line"
           = render "sort_header", column: "name", label: t("library.index.columns.name"), search: @search

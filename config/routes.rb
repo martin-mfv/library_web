@@ -33,5 +33,12 @@ Rails.application.routes.draw do
 
   get "shared_with_me", to: "library_files#shared_with_me", as: :shared_with_me
 
+  resources :library_files, only: [ :destroy ] do
+    member do
+      post :copy
+      patch :change_visibility
+    end
+  end
+
   root to: "library_files#index"
 end

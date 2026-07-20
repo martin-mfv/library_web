@@ -3,9 +3,10 @@ require "rails_helper"
 RSpec.describe LibraryFilesController, type: :request do
   let(:user) { create(:user) }
 
-  shared_examples "requires authentication" do |path_helper, params = {}|
+  shared_examples "requires authentication" do |http_method, path_builder, params = {}|
     it "redirects to sign in" do
-      get public_send(path_helper), params: params
+      path = path_builder.respond_to?(:call) ? instance_exec(&path_builder) : public_send(path_builder)
+      public_send(http_method, path, params: params)
 
       expect(response).to redirect_to(new_user_session_path)
     end
@@ -13,7 +14,7 @@ RSpec.describe LibraryFilesController, type: :request do
 
   describe "GET #index" do
     context "when user is not signed in" do
-      include_examples "requires authentication", :root_path
+      include_examples "requires authentication", :get, :root_path
     end
 
     context "when user is signed in" do
@@ -100,7 +101,7 @@ RSpec.describe LibraryFilesController, type: :request do
 
   describe "GET #shared_with_me" do
     context "when user is not signed in" do
-      include_examples "requires authentication", :shared_with_me_path
+      include_examples "requires authentication", :get, :shared_with_me_path
     end
 
     context "when user is signed in" do
@@ -134,6 +135,96 @@ RSpec.describe LibraryFilesController, type: :request do
           expect(response.body).to include("Project Plan.pdf")
           expect(response.body).not_to include("Holiday.png")
         end
+      end
+    end
+  end
+
+  describe "POST #copy" do
+    context "when user is not signed in" do
+      let(:file) { create_library_file(user: create(:user), name: "Shared.pdf") }
+
+      include_examples "requires authentication", :post, -> { copy_library_file_path(file) }
+    end
+
+    context "when user is signed in" do
+      before { sign_in user }
+
+      it "creates a cloned file for current user" do
+        source = create_library_file(user: create(:user), name: "Shared.pdf", bytes: 123, at: 3.days.ago)
+
+        expect {
+          post copy_library_file_path(source)
+        }.to change { user.library_files.count }.by(1)
+
+        copy = user.library_files.order(:id).last
+        expect(copy.name).to eq("Shared.pdf (copy)")
+        expect(copy.visibility).to eq("private")
+        expect(copy.copied_from).to eq(source)
+        expect(copy.attachment.blob).not_to eq(source.attachment.blob)
+        expect(copy.uploaded_at).not_to eq(source.uploaded_at)
+        expect(response).to redirect_to(root_path(sort: "date", direction: "desc"))
+      end
+    end
+  end
+
+  describe "DELETE #destroy" do
+    context "when user is not signed in" do
+      let(:file) { create_library_file(user: create(:user), name: "Other.txt") }
+
+      include_examples "requires authentication", :delete, -> { library_file_path(file) }
+    end
+
+    context "when user is signed in" do
+      before { sign_in user }
+
+      it "deletes own file" do
+        file = create_library_file(user: user, name: "Mine.txt")
+
+        expect {
+          delete library_file_path(file)
+        }.to change(LibraryFile, :count).by(-1)
+      end
+
+      it "does not allow deleting another user's file" do
+        file = create_library_file(user: create(:user), name: "Other.txt")
+
+        expect {
+          delete library_file_path(file)
+        }.not_to change(LibraryFile, :count)
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
+
+  describe "PATCH #change_visibility" do
+    context "when user is not signed in" do
+      let(:file) { create_library_file(user: create(:user), name: "Other.txt") }
+
+      include_examples "requires authentication", :patch, -> { change_visibility_library_file_path(file) }
+    end
+
+    context "when user is signed in" do
+      before { sign_in user }
+
+      it "toggles own file visibility" do
+        file = create_library_file(user: user, name: "Mine.txt")
+        file.update!(visibility: :public)
+
+        patch change_visibility_library_file_path(file)
+        expect(file.reload.visibility).to eq("private")
+
+        patch change_visibility_library_file_path(file)
+        expect(file.reload.visibility).to eq("public")
+      end
+
+      it "does not allow changing visibility of another user's file" do
+        file = create_library_file(user: create(:user), name: "Other.txt")
+        original_visibility = file.visibility
+
+        patch change_visibility_library_file_path(file)
+
+        expect(response).to have_http_status(:not_found)
+        expect(file.reload.visibility).to eq(original_visibility)
       end
     end
   end

@@ -1,0 +1,7 @@
+- if flash.any?
+  div class="max-w-5xl mx-auto mb-4 space-y-2"
+    - flash.each do |type, message|
+      - next if message.blank?
+      - tone = type.to_s == "notice" ? "border-success bg-surface" : "border-danger bg-surface"
+      div class="rounded-card border shadow-pop px-3 py-3 text-sm leading-5 text-ink #{tone}"
+        = message
