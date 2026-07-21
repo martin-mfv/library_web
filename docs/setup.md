@@ -48,8 +48,13 @@ Expected output:
 User ready: owner@example.com (id=...)
 ```
 
+## 7) Build CSS
 
-## 7) Access application
+```bash
+docker compose exec web bin/rails tailwindcss:build
+```
+
+## 8) Access application
 
 - App: http://localhost:3000
 - Login with the email/password you created in step 6.
