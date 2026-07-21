@@ -32,5 +32,10 @@ After running `rails db:seed`, you can sign in with either of these accounts:
 - Auth: Devise
 - File Storage: ActiveStorage (Disk)
 
+## DEMO 
+
+
+https://github.com/user-attachments/assets/a91bbe11-77d3-4882-b8a9-e08459a51523
+
 
 
