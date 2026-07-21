@@ -1,24 +1,39 @@
-# README
+# Library Web
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Mini Dropbox-style application built with Ruby on Rails.
 
-Things you may want to cover:
+## Documentation Index
 
-* Ruby version
+Use this README as an entry point. Detailed documentation is split into dedicated files under `docs/`.
 
-* System dependencies
+### Getting Started
 
-* Configuration
+- Setup Guide: [docs/setup.md](docs/setup.md)
 
-* Database creation
+### Architecture
 
-* Database initialization
+- System Design: [docs/architecture/system_design.md](docs/architecture/system_design.md)
+- ERD: [docs/architecture/erd.md](docs/architecture/erd.md)
 
-* How to run the test suite
+### Product and UI Context
 
-* Services (job queues, cache servers, search engines, etc.)
+- Implementation Roadmap: [docs/contexts/library-implementation-roadmap.md](docs/contexts/library-implementation-roadmap.md)
+- Design Tokens (Dropbox-style): [docs/contexts/dropbox-design-tokens.md](docs/contexts/dropbox-design-tokens.md)
 
-* Deployment instructions
+### Engineering Process
 
-* ...
+- Domain Documentation Workflow: [docs/agents/domain.md](docs/agents/domain.md)
+- Issue Tracker Workflow: [docs/agents/issue-tracker.md](docs/agents/issue-tracker.md)
+
+## Quick Project Snapshot
+
+- Backend: Ruby 3.4, Rails 7.2
+- Database: PostgreSQL
+- Frontend: ERB + Tailwind + Hotwire (React island for upload dropzone)
+- Auth: Devise
+- File Storage: ActiveStorage (Disk)
+- Async: Redis + Sidekiq (roadmap phase dependent)
+
+## Development Principle
+
+Keep this file concise. Add or update detailed content in `docs/*.md`, then link it from the index above.
