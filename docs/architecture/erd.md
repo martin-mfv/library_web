@@ -1,10 +1,5 @@
 # ERD (Entity Relationship Diagram)
 
-Generated from the **actual** database (`db/schema.rb`, schema version
-`2026_07_20_094008`) and the models (`app/models/user.rb`,
-`app/models/library_file.rb`). Columns and types are read verbatim from the
-schema; relationships are read from the model associations and foreign keys.
-
 ```mermaid
 erDiagram
     users ||--o{ library_files : "owns (user_id)"
