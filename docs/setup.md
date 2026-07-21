@@ -1,56 +1,55 @@
 # Setup Guide
 
+This guide helps you run the project locally with Docker and create a login user.
+
 ## 1) Prerequisites
 
-- Docker Desktop
-- Docker Compose
+- Docker Desktop (Docker Engine + Docker Compose)
 - Git
 
-## 2) Clone and enter project
+## 2) Clone repository
 
 ```bash
 git clone git@github.com:martin-mfv/library_web.git
 cd library_web
 ```
 
-## 3) Boot application with Docker
+## 3) Start services
 
 ```bash
-docker compose up --build
+docker compose up -d --build
 ```
 
-## 4) Setup database
+Keep this terminal running. Open a new terminal for the next steps.
 
-In a new terminal:
+## 4) Prepare database
 
 ```bash
 docker compose exec web bin/rails db:prepare
 ```
 
-## 5) Seed default data
+## 5) Seed base data (optional but recommended)
 
 ```bash
 docker compose exec web bin/rails db:seed
 ```
 
-## 6) Access application
+## 6) Create login user (required)
 
-- App: http://localhost:3000
-
-## 7) Useful commands
+This project does not provide a registration UI, so you must create a user via rake task.
 
 ```bash
-# Run test suite
-docker compose exec web bundle exec rspec
-
-# Run RuboCop
-docker compose exec web bundle exec rubocop
-
-# Rails console
-docker compose exec web bin/rails c
+docker compose exec web bin/rake 'users:add[owner@example.com,Secret123!,Owner Name]'
 ```
 
-## Notes
+Expected output:
 
-- For local non-Docker setup, use the Ruby and PostgreSQL versions declared in project files.
-- If credentials are required, ensure `RAILS_MASTER_KEY` is correctly configured.
+```text
+User ready: owner@example.com (id=...)
+```
+
+
+## 7) Access application
+
+- App: http://localhost:3000
+- Login with the email/password you created in step 6.

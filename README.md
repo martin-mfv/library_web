@@ -29,7 +29,7 @@ Use this README as an entry point. Detailed documentation is split into dedicate
 
 - Backend: Ruby 3.4, Rails 7.2
 - Database: PostgreSQL
-- Frontend: ERB + Tailwind + Hotwire (React island for upload dropzone)
+- Frontend: Slim + Tailwind + Hotwire (React island for upload dropzone)
 - Auth: Devise
 - File Storage: ActiveStorage (Disk)
 - Async: Redis + Sidekiq (roadmap phase dependent)
