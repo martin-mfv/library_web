@@ -2,9 +2,6 @@
 
 Mini library application built with Ruby on Rails.
 
-## Documentation Index
-
-Use this README as an entry point. Detailed documentation is split into dedicated files under `docs/`.
 
 ### Getting Started
 
