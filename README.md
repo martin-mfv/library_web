@@ -10,6 +10,15 @@ Use this README as an entry point. Detailed documentation is split into dedicate
 
 - Setup Guide: [docs/setup.md](docs/setup.md)
 
+### Default Accounts
+
+After running `rails db:seed`, you can sign in with either of these accounts:
+
+| Email                 | Password       |
+| --------------------- | -------------- |
+| `demo@library.local`  | `Password123!` |
+| `owner@library.local` | `Password123!` |
+
 ### Architecture
 
 - System Design: [docs/architecture/System_design.png](docs/architecture/System_design.png)
