@@ -1,6 +1,6 @@
 # Library Web
 
-Mini Dropbox-style application built with Ruby on Rails.
+Mini library application built with Ruby on Rails.
 
 ## Documentation Index
 
