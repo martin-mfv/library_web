@@ -12,7 +12,7 @@ Use this README as an entry point. Detailed documentation is split into dedicate
 
 ### Architecture
 
-- System Design: [docs/architecture/system_design.md](docs/architecture/system_design.md)
+- System Design: [docs/architecture/System_design.png](docs/architecture/System_design.png)
 - ERD: [docs/architecture/erd.md](docs/architecture/erd.md)
 
 ## Quick Project Snapshot
